@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mi primera WEB</title>
+    <style>
+        table, th, td{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <table style="width: 500px;">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+       <tbody>
+        <tr>
+            <td>Hola Bits</td>
+            <td>Gratis</td>
+        </tr>
+        <tr>
+            <td>Chanchito feliz</td>
+            <td>19.90$</td>
+        </tr>
+        <tr>
+            <td>Chanchito feliz muy feliz</td>
+            <td>29.90$</td>
+        </tr>
+       </tbody>
+       <tfoot>
+            <td></td>
+            <td>Total : 49.80$</td>
+       </tfoot>
+
+    </table>
+
+    <!--ul:Lista no ordenada ol:ordenada-->
+    <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+    </ul>
+    <ol>
+        <li value="50">Elemento 1</li>
+        <li value="51">Elemento 2</li>
+        <li value="52">Elemento 3</li>
+        <li value="53">Elemento 4</li>
+        <li>
+            <ol>
+                <li style="list-style-type: lower-alpha;">sub elemnto 1</li>
+                <li style="list-style-type: lower-alpha;">sub elemnto 2</li>
+                <li style="list-style-type: lower-alpha;">sub elemnto 3</li>
+            </ol>
+        </li>
+    </ol>
+    <form action="/formulario" method="post">
+        <label for="nombre">Nombre</label>
+        <input value="chanchito"  id="nombre"  name="nombre" placeholder="Nombre"/>
+        <br>
+        <label for="apellido">Apellido</label>
+        <input value="feliz"  id="apellido"  name="apellido" placeholder="Apellido"/>
+        <br>
+        <Label for="comentario">Comentario</Label>
+        <textarea  name="comentario" id="comentario"  placeholder=" Ingrese Comentario" cols="50" rows="10">Este es un valor por dfecto</textarea>
+        <br>
+        <button type="button">Tipo Boton</button>
+        <button type="reset">Tipo Reset</button>
+        <button type="submit">Tipo Submit</button>
+
+    </form>
+    <h1>Mi primer Heading</h1>
+    <h2>Mi segundo Heading</h2>
+    <h3>Mi tercer Heading</h3>
+    <h4>Mi cuarto Heading</h4>
+    <h5>Mi quinto Heading</h5>
+    <h6>Chanchito feliz</h6>
+    <p>Chanchito feliz esta muy feliz</p>
+    <hr>
+    <p>Chanchito trite esta muy tirste</p>
+    <h2>Chanchito Felipe</h2>
+    <p>Este texto es <span>mucho mas largo</span> y es para mostar <br><br> la etiqueta de span!</p>
+    <!--Este texto es un comentario-->
+    <a target="_blank" href="https://www.google.com.pe/?hl=es">Ir a Google</a><br>
+    <img src="img/coffee.png" width="400" />
+   
+</body>
+</html>
