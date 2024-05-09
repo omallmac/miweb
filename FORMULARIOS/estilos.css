@@ -1,0 +1,17 @@
+h1{
+    font-family: cursive;
+    text-align: center;
+    color: bbisque;
+    background: rgb(0,0,0);
+background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(8,22,103,1) 100%);
+
+}
+
+.row{
+    margin-top: 10px;
+
+}
+.button{
+    width: 20%;
+    margin-left: 40%;
+}
