@@ -15,3 +15,9 @@ function show(mensaje,type) {
     title: mensaje
   });
 }
+
+
+function redirectToPage(){
+  window.location.href = "http://localhost:8000/Form_DB/index.php";
+}
+

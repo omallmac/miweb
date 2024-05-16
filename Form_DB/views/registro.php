@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/css/bootstrap.min.css">
 
@@ -14,7 +11,7 @@
     <title>Registro</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post"> 
         <h1>Agregar nuevo</h1>
         <div class="row">
             <div class="col">
@@ -44,13 +41,17 @@
                 <input type="checkbox" name="enable" id="enable">
             </div>
         </div>
-        <div class="row">
-            <div class="col">
+        <div class="d-flex flex-row">
+            <div class="p-2">
                 <button type="submit" class="btn btn-primary" >Agregar</button>
             </div>
+            <div class="p-2">
+                <button type="button" class="btn btn-secondary" onclick="redirectToPage()">Cancelar</button>
+            </div>
         </div>
-        
-    </form><br>
+        </form>
+   
+   <br>
 
     
     <a href="../index.php" class="btn btn-primary" style="display: block; margin: 0 auto; width: fit-content;">Registros</a>
@@ -85,9 +86,14 @@
             $execute=mysqli_query($db,$sql);
             if($execute){
                 echo "<script>show('New Record creaed','success') </script>";
+                echo "<script>
+                        setTimeout(() => {
+                            redirectToPage();
+                        },'3500');
+                     </script>";
             }
         }catch(Exception $e){
-            echo "<script>show('Error','error');</script>";
+            echo "<script>show('Error','error');</>";
 
         }
         $db->close();

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/css/bootstrap.min.css">
     <script src="../js/js/bootstrap.min.js"> </script>
@@ -11,14 +8,17 @@
     <title>Editar</title>
 </head>
 <body>
-    
+    <?php
+    // Obtener el ID pasado por la URL
+    $id = $_GET['id'];
+    ?>
     <form action="" method="post">
         <h1>Editar Registro</h1>
         <div class="row">
             <div class="col">
                 <label for="id">ID</label>
-                <input type="text" name="id" id="id" class="form-control" required>
-            </div>
+                <input type="text" name="id" id="id" class="form-control" value="<?php echo $id; ?>" readonly required>
+        </div>
             <div class="col">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" id="nombre" class="form-control" required>
@@ -42,9 +42,12 @@
                 <input type="checkbox" name="enable" id="enable">
             </div>
         </div>
-        <div class="row">
-            <div class="col">
+        <div class="d-flex flex-row">
+            <div class="p-2">
                 <button type="submit" class="btn btn-primary" >Actualizar</button>
+            </div>
+            <div class="p-2">
+                <button type="button" class="btn btn-secondary" onclick="redirectToPage()">Cancelar</button>
             </div>
         </div>
     </form>
@@ -60,16 +63,23 @@
 
         include '../db/db.php';
 
-        $sql= "update profesor set name='$nombre',lastname='$apellido',job='$job' where";
-        echo "sql: $sql";
+        $sql = "UPDATE profesor SET name='$nombre', lastname='$apellido', job='$job' WHERE id=$id";
+
+        
 
         try{
             $execute=mysqli_query($db,$sql);
             if($execute){
-                echo "<script>show('New Record creaed') </script>";
+                echo "<script>show('Form Update','success') </script>";
+                echo "<script>
+                        setTimeout(() => {
+                            redirectToPage();
+                        },'3500');
+                     </script>";
             }
         }catch(Exception $e){
-            echo "<script>show('New Record creaed',Error) </script>";
+            echo "<script>show('Error Update','error');</>";
+
         }
         $db->close();
     }
