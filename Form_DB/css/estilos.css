@@ -20,9 +20,8 @@ a{
     margin-left: 5vh;
 }
 
-img{
-    width: 30;
-    height: 30;
-    
-
+.icono {
+    width: 20px; /* Define el ancho deseado */
+    height: auto; /* Mantiene la relación de aspecto original */
 }
+

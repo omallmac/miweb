@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/css/bootstrap.min.css">
+
     <script src="../js/js/bootstrap.min.js"> </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="../fundiones.js"></script>
     <title>Registro</title>
 </head>
@@ -46,30 +49,46 @@
                 <button type="submit" class="btn btn-primary" >Agregar</button>
             </div>
         </div>
-    </form>
+        
+    </form><br>
+
+    
+    <a href="../index.php" class="btn btn-primary" style="display: block; margin: 0 auto; width: fit-content;">Registros</a>
+
+ 
+    
     <?php
     if(isset($_POST["id"])&& isset($_POST["nombre"])&& isset($_POST["apellido"])&& isset($_POST["job"]) ){
         
+        
+
         $id=$_POST["id"];
         $nombre=$_POST["nombre"];
         $apellido=$_POST["apellido"];
         $job=$_POST["job"];
-        $enable=true;
+
+        if (isset($_REQUEST['enable'])) {
+            $enable = true;
+        } else {
+            $enable = false;
+        }
+        
         
 
         include '../db/db.php';
 
-        $sql= "insert into profesor (id,name,lastname,job,enable)
-         values ($id,'$nombre','$apellido','$job',$enable)";
-        echo "sql: $sql";
-
+        $sql = "INSERT INTO profesor (id, name, lastname, job, enable)
+        VALUES ($id, '$nombre', '$apellido', '$job', '$enable')";
+        
+        
         try{
             $execute=mysqli_query($db,$sql);
             if($execute){
-                echo "<script>show('New Record creaed') </script>";
+                echo "<script>show('New Record creaed','success') </script>";
             }
         }catch(Exception $e){
-            echo "<script>show('New Record creaed',Error) </script>";
+            echo "<script>show('Error','error');</script>";
+
         }
         $db->close();
     }

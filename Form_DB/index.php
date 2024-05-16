@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/css/bootstrap.min.css">
-    <script src="js/js/bootstrap.min.js"> </script>
-
+    <link rel="stylesheet" href="css/css/bootstrap.min.css"> <!-- Aquí se carga Bootstrap primero -->
+    <link rel="stylesheet" href="css/estilos.css"> <!-- Luego se cargan tus estilos personalizados -->
+    <script src="js/js/bootstrap.min.js"></script>
 </head>
+
 <body>
     <h1>Listado de profesores</h1>
     
@@ -43,8 +43,8 @@
                         <td>".$row['job']."</td>
                         <td>".$row['enable']."</td>
                         <td>".$row['enable']."</td>
-                        <td><a href='views/editar.php?id=$row[id]'><img src='icons/pencil-solid.svg'> |</td>
-                        <td><a href='views/eliminar.php'><img src='icons/trash-solid.svg'>|</td>
+                        <td><a href='views/editar.php?id=$row[id]'><img src='icons/pencil-solid.svg' class='icono'> |</td>
+                        <td><a href='views/eliminar.php'><img src='icons/trash-solid.svg' class='icono'>|</td>
                     <tr>
 
                 
