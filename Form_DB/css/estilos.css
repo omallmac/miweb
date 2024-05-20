@@ -1,27 +1,21 @@
-table{
+table {
     width: 80%;
     border-radius: 5px;
     margin-left: 10%;
     margin-right: 10%;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
 }
-
-td{
+td {
     border-radius: 5px;
 }
-
-h1{
+h1 {
     text-align: center;
 }
-
-a{
+a {
     margin-left: 5vh;
 }
-
-img{
+img {
     width: 16px; /* Define el ancho deseado */
     height: 16px; /* Mantiene la relación de aspecto original */
 }
-

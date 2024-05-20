@@ -2,14 +2,17 @@
 <head>
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/css/bootstrap.min.css">
+
     <script src="../js/js/bootstrap.min.js"> </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="../funciones.js"></script>
     <title>Registro</title>
 </head>
 <body>
     <form action="" method="post"> 
-        <h1>Agregar Profesor</h1>
+        <h1>Agregar Carrera</h1>
         <div class="row">
             <div class="col">
                 <label for="id">ID</label>
@@ -22,20 +25,22 @@
         </div>
         <div class="row">
             <div class="col">
-                <label for="id">Apellido</label>
-                <input type="text" name="apellido" id="apellido" class="form-control"  required>
+                <label for="id">Duracion</label>
+                <input type="number" name="duracion" id="apellido" class="form-control"  required>
             </div>
             <div class="col">
-                <label for="nombre">Job</label>
-                <input type="text" name="job" id="job" class="form-control" required>
+                <label for="nombre">Facultad</label>
+                <input type="text" name="facultad" id="job" class="form-control" required>
             </div>
         </div>
-            <br>
-
-        <div class="row">
+       <div class="row">
+            <di class="col">
+                <label for="id">Costo</label>
+                <input type="number" name="costo" id="apellido" class="form-control"  required>
+            </di>
             <div class="col">
-                <label for="">Esta Habilitado?</label>
-                <input type="checkbox" name="enable" id="enable">
+                <label for="nombre">Modalidad</label>
+                <input type="text" name="modalidad" id="job" class="form-control" required>
             </div>
         </div>
         <div class="d-flex flex-row">
@@ -43,41 +48,46 @@
                 <button type="submit" class="btn btn-primary" >Agregar</button>
             </div>
             <div class="p-2">
-                <button type="button" class="btn btn-secondary" onclick="redirectToPage()">Cancelar</button>
+                <button type="button" class="btn btn-secondary" onclick="redirectToPage3()">Cancelar</button>
             </div>
         </div>
         </form>
    <br>
-    <a href="../index.php" class="btn btn-primary" style="display: block; margin: 0 auto; width: fit-content;">Registros</a>
     <?php
-    if(isset($_POST["id"])&& isset($_POST["nombre"])&& isset($_POST["apellido"])&& isset($_POST["job"]) ){
+    if(isset($_POST["id"])&& isset($_POST["nombre"])&& isset($_POST["duracion"])&& isset($_POST["facultad"]) && isset($_POST["costo"]) && isset($_POST["modalidad"])  )
+    {
+        
         $id=$_POST["id"];
         $nombre=$_POST["nombre"];
-        $apellido=$_POST["apellido"];
-        $job=$_POST["job"];
-        if (isset($_REQUEST['enable'])) {
-            $enable = true;
-        } else {
-            $enable = false;
-        }
+        $duracion=$_POST["duracion"];
+        $facultad=$_POST["facultad"];
+        $costo=$_POST["costo"];
+        $modalidad=$_POST["modalidad"];
+ 
         include '../db/db.php';
-        $sql = "INSERT INTO profesor (id, name, lastname, job, enable)
-        VALUES ($id, '$nombre', '$apellido', '$job', '$enable')";
+
+        $sql = "INSERT INTO carrera(id, name, duracion, facultad, costo, modalidad)
+        VALUES ($id, '$nombre',$duracion,'$facultad',$costo,'$modalidad')";
+        
+       echo $sql;
+        
         try{
             $execute=mysqli_query($db,$sql);
             if($execute){
-                echo "<script>show('Registro Creado','success') </script>";
+                echo "<script>show('Carrera Registrado','success') </script>";
                 echo "<script>
                         setTimeout(() => {
-                            redirectToPage();
+                            redirectToPage3();
                         },'3500');
                      </script>";
             }
         }catch(Exception $e){
-            echo "<script>show('Error al Registrar','error') </script>";
+            echo "<script>show('Error al Registrar','error')</script>";
+
         }
         $db->close();
     }
+    
     ?>
 </body>
 </html>

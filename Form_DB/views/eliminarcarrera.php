@@ -4,8 +4,9 @@
 
     $id = $_POST["deleteId"];
 
-    $sql = "DELETE FROM Profesor WHERE id = $id";
+    $sql = "DELETE FROM carrera WHERE id = $id";
 
+    
     try {
         $execute = mysqli_query($db, $sql);
         if($execute){

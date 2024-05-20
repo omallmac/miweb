@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <head>
     <title>Formulario</title>
-    <link rel="stylesheet" href="css/css/bootstrap.min.css"> <!-- Aquí se carga Bootstrap primero -->
-    <link rel="stylesheet" href="css/estilos.css"> <!-- Luego se cargan tus estilos personalizados -->
+    <link rel="stylesheet" href="css/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="css/estilos.css"> 
     <script src="js/js/bootstrap.min.js"></script>
     <script src="jquery/jquery-3.7.1.min.js"></script>
     <script src="funciones.js"></script>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
         <img src="icons/bootstrap-logo.svg" alt="" width="30" height="24">
@@ -29,11 +30,12 @@
             </div>
         </div>
     </nav>
-    <h1>Listado de Profesores</h1>
-    <a href="views/registro.php" class="btn btn-primary"> Agregar</a>
+
+    <h1>Listado de Alumnos</h1>
+    <a href="views/registroAlumno.php" class="btn btn-primary"> Agregar </a>
     <?php
         include 'db/db.php';
-        $sql = "SELECT * FROM profesor";
+        $sql = "SELECT * FROM Alumno";
         $result = mysqli_query($db,$sql);
     ?>
     <table border="1" >
@@ -41,34 +43,40 @@
             <td>ID</td>
             <td>Name</td>
             <td>LastName</td>
-            <td>Job</td>
-            <td>Enable</td>
+            <td>Edad</td>
+            <td>Semestre</td>
+            <td>Turno</td>
+            <td>Carrera</td>
+            <td>DNI</td>
+            <td>Telefono</td>
+
             <td colspan="2">Action</td>
         </tr>
         <?php 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "
-                        <tr>
-                            <td>{$row['id']}</td>
-                            <td>{$row['name']}</td>
-                            <td>{$row['lastname']}</td>
-                            <td>{$row['job']}</td>
-                            <td>{$row['enable']}</td>
-                            <td>
-                                <a href='views/editar.php?id={$row['id']} &name=" . urlencode($row['name']) . "&lastname=" . urlencode($row['lastname']) . "&job=" . urlencode($row['job']) . "&enable=". urlencode($row['enable']) . "' class='btn btn-warning'>
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "
+                    <tr>    
+                        <td>".$row['id']."</td>
+                        <td>".$row['name']."</td>
+                        <td>".$row['lastname']."</td>
+                        <td>".$row['edad']."</td>
+                        <td>".$row['semestre']."</td>
+                        <td>".$row['turno']."</td>
+                        <td>".$row['carrera']."</td>
+                        <td>".$row['dni']."</td>
+                        <td>".$row['telefono']."</td>
+                        <td>
+                            <a href='views/editar.alumno.php?id={$row['id']} &name=" . urlencode($row['name']) . "&lastname=" . urlencode($row['lastname']) . "&edad=" . urlencode($row['edad']) . "&semestre=". urlencode($row['semestre']) . "&turno=". urlencode($row['turno']) ."&carrera=". urlencode($row['carrera']) . "&dni=". urlencode($row['dni']) ."&telefono=". urlencode($row['telefono']) ."' class='btn btn-warning'>
                                     <img src='icons/pencil-solid.svg'>
-                                </a>
-                            </td>
-                            <td>
-                                <button class='btn btn-danger open-modal' data-id='{$row['id']}' data-bs-toggle='modal' data-bs-target='#exampleModal'>
-                                    <img src='icons/trash-solid.svg'>
-                                </button>
-                            </td>
-                        </tr>
-                    ";               
-                }
+                            </a>
+                        </td>
+                        <td><button class='btn btn-danger open-modal' data-id=$row[id] data-bs-toggle='modal' 
+                        data-bs-target='#exampleModal'><img src='icons/trash-solid.svg'></button></td>                    <tr>
+                ";               
+            }
         ?>
     </table>
+    
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -80,7 +88,8 @@
             <div class="modal-body">
                 <form enctype="multipart/form-data" method="post">
                     <input type="text" class="form-control" name="deleteId" id="deleteId" disabled>
-                    <button type="submit" class="btn btn-primary" name="save" onclick="deleteRecord()">Si</button>
+                    <button type="submit" class="btn btn-primary" name="save" onclick="deleteRecord2()">Si</button>
+                    
                 </form>
             </div>
             <div class="modal-footer">
@@ -91,11 +100,15 @@
     </div>
   </div>
 </div>
+
 <?php 
     if(isset($_POST["save"]) && isset($_POST["valId"])){
         $id = $_POST["valId"];
+
         echo '<script>alert("Registered successfully")</script>';
     }
+
 ?>
+
 </body>
 </html>
